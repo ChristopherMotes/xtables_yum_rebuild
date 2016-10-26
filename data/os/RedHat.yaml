@@ -2,8 +2,10 @@
 xtables_yum_rebuild::packages: "xtables_yum_rebuild"
 xtables_yum_rebuild::action_file:
   - path: "/etc/yum/post-actions/xtables.action"
+  - source: "puppet:///modules/xtables_yum_rebuild/xtables.action"
 
 xtables_yum_rebuild::action_script:
   - path: "/usr/local/sbin/xtables_install.sh" 
   - mode: "750"
+  - source: "puppet:///modules/xtables_yum_rebuild/xtables_install.sh"
 
