@@ -1,1 +1,1 @@
-kernel:install:/usr/local/sbin/xtables.sh
+kernel:install:/usr/local/sbin/xtables_install.sh
