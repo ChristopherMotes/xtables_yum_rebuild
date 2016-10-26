@@ -1,2 +1,7 @@
 ---
-noop_value: 'false'
+xtables_yum_rebuild::noop_value: 'false'
+xtables_yum_rebuild::file_defaults
+  - ensure: 'present'
+  - owner:  'root'
+  - group:  'root'
+  - mode:   '640'
