@@ -4,6 +4,6 @@ xtables_yum_rebuild::action_file:
   - path: "/etc/yum/post-actions/xtables.action"
 
 xtables_yum_rebuild::action_script:
-  - path: "/usr/local/bin/xtables_install.sh" 
+  - path: "/usr/local/sbin/xtables_install.sh" 
   - mode: "750"
 
