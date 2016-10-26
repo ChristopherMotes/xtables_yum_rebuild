@@ -18,4 +18,13 @@ class xtables_yum_rebuild (
     group  	=> $file_defaults['group'],
     mode   	=> $file_defaults['mode'],
   } # end file xtables_action_file
+  file { 'xtables_install_script':
+    noop   	=> $noop_value,
+    path	=> $action_script['path'],
+    source	=> $action_script['source'],
+    ensure 	=> $file_defaults['ensure'],
+    owner  	=> $file_defaults['owner'],
+    group  	=> $file_defaults['group'],
+    mode   	=> $action_script['mode'],
+  } # end file xtables_action_file
 }
