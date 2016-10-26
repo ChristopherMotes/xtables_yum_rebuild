@@ -1,5 +1,5 @@
 ---
-xtables_yum_rebuild::packages: "xtables_yum_rebuild"
+xtables_yum_rebuild::packages: "yum-plugin-post-transaction-actions"
 xtables_yum_rebuild::action_file:
   path: "/etc/yum/post-actions/xtables.action"
   source: "puppet:///modules/xtables_yum_rebuild/xtables.action"
