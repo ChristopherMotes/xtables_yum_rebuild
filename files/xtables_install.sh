@@ -1,4 +1,5 @@
 #!/bin/bash
+KERNEL_VERSION=$(rpm -q kernel | sort -n | tail -1 | awk -F 'l-' ' { print $2 } ')
 curl -s /opt/xtables-addons-2.10.tar.xz http://downloads.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-2.10.tar.xz
 cd /opt
 cp /opt/xtables-addons-2.10/mconfig /tmp/mconfig
@@ -7,7 +8,7 @@ tar -xJf xtables-addons-2.10.tar.xz
 mv /tmp/mconfig /opt/xtables-addons-2.10
 #yum -y install gcc kernel-devel iptables-devel perl-Text-CSV_XS automake compat-iptables
 cd /opt/xtables-addons-2.10
-for x in ./configure make 'make install'
+for x in "./configure --with-kbuild=/lib/modules/$KERNEL_VERSION/build" make 'make install'
 do
  if ! ( $x  )
  then
