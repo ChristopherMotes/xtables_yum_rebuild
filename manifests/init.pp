@@ -5,5 +5,5 @@ class xtables_yum_rebuild (
   package { $packages:
     noop   => $noop_value,
     ensure => 'present'
-
+  }
 }
