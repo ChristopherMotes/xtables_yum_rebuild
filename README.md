@@ -7,6 +7,7 @@
     * [What xtables_yum_rebuild affects](#what-xtables_yum_rebuild-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with xtables_yum_rebuild](#beginning-with-xtables_yum_rebuild)
+1. [Test - Steps to Unit test module](#test)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -24,12 +25,6 @@ it?" If your module has a range of functionality (installation, configuration,
 management, etc.), this is the time to mention it.
 
 ## Setup
-
-## Test
-   sudo yum -y install local  https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
-   sudo yum -y install puppet-agent
-   sudo puppet apply --modulepath=~ec2-user/ -e 'include xtables_yum_rebuild'
-   sudo /opt/puppetlabs/bin/puppet apply --modulepath=~ec2-user/ -e 'include xtables_yum_rebuild'
 
 ### What xtables_yum_rebuild affects **OPTIONAL**
 
@@ -59,6 +54,20 @@ The very basic steps needed for a user to get the module up and running. This
 can include setup steps, if necessary, or it can be an example of the most
 basic use of the module.
 
+## Test
+```
+   sudo yum -y install local  https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+   sudo yum -y install puppet-agent
+   git clone https://github.com/ChristopherMotes/xtables_yum_rebuild.git
+   sudo yum -y install gcc kernel-devel-`uname -r` kernel-headers-`uname -r` iptables-devel perl-Text-CSV_XS automake compat-iptables
+   sudo /opt/puppetlabs/bin/puppet apply --modulepath=~ec2-user/ -e 'include xtables_yum_rebuild'
+   sudo iptables -I INPUT -m geoip --src-cc AE,BD,BH,BR,CN,CO,DM,FR,HK,ID,IN,JP -j DROP
+   sudo service iptables save
+   sudo yum -y update
+   sudo init 6
+   ### wait and login in again
+   sudo iptables -L
+```
 ## Usage
 
 This section is where you describe how to customize, configure, and do the
