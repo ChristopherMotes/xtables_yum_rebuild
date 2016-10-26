@@ -1,0 +1,15 @@
+{
+  "name": "MotesCJ-xtables_yum_rebuild",
+  "version": "0.1.0",
+  "author": "MotesCJ",
+  "summary": "Ensures that yum rebuilds the xtables modules when the kernel is patched",
+  "license": "Apache-2.0",
+  "source": "https://github.com/ChristopherMotes/xtables_yum_rebuild.git",
+  "project_page": "https://github.com/ChristopherMotes/xtables_yum_rebuild.git",
+  "issues_url": "https://github.com/ChristopherMotes/xtables_yum_rebuild.git",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": "yaml"
+}
+
