@@ -1,12 +1,20 @@
 #!/bin/bash
-wget -O /opt/xtables-addons-2.10.tar.xz http://downloads.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-2.10.tar.xz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fxtables-addons%2Ffiles%2F&ts=1477488107&use_mirror=iweb
+curl -s /opt/xtables-addons-2.10.tar.xz http://downloads.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-2.10.tar.xz
 cd /opt
-tar -xf xtables-addons-2.10.tar.xz
-yum -y install gcc kernel-devel iptables-devel perl-Text-CSV_XS automake
+cp /opt/xtables-addons-2.10/mconfig /tmp/mconfig
+rm -rf /opt/xtables-addons-2.10
+tar -xJf xtables-addons-2.10.tar.xz
+mv /tmp/mconfig /opt/xtables-addons-2.10
+#yum -y install gcc kernel-devel iptables-devel perl-Text-CSV_XS automake compat-iptables
 cd /opt/xtables-addons-2.10
-./configure
-make
-make install
+for x in ./configure make 'make install'
+do
+ if ! ( $x  )
+ then
+  logger "$x failed disabling iptables on boot"
+  chkconfig iptables off
+ fi
+done
 cd /opt/xtables-addons-2.10/geoip
 ./xt_geoip_dl
 ./xt_geoip_build GeoIPCountryWhois.csv
