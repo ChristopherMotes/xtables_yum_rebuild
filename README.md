@@ -25,6 +25,12 @@ management, etc.), this is the time to mention it.
 
 ## Setup
 
+## Test
+   sudo yum -y install local  https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+   sudo yum -y install puppet-agent
+   sudo puppet apply --modulepath=~ec2-user/ -e 'include xtables_yum_rebuild'
+   sudo /opt/puppetlabs/bin/puppet apply --modulepath=~ec2-user/ -e 'include xtables_yum_rebuild'
+
 ### What xtables_yum_rebuild affects **OPTIONAL**
 
 If it's obvious what your module touches, you can skip this section. For
