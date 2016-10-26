@@ -1,6 +1,7 @@
 #!/bin/bash
 KERNEL_VERSION=$(rpm -q kernel | sort -n | tail -1 | awk -F 'l-' ' { print $2 } ')
-curl -s /opt/xtables-addons-2.10.tar.xz http://downloads.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-2.10.tar.xz
+#curl -s /opt/xtables-addons-2.10.tar.xz http://downloads.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-2.10.tar.xz
+wget -O /opt/xtables-addons-2.10.tar.xz http://pilotfiber.dl.sourceforge.net/project/xtables-addons/Xtables-addons/xtables-addons-2.10.tar.xz
 cd /opt
 cp /opt/xtables-addons-2.10/mconfig /tmp/mconfig
 rm -rf /opt/xtables-addons-2.10
