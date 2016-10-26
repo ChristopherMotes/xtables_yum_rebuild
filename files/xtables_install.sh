@@ -6,7 +6,7 @@ cp /opt/xtables-addons-2.10/mconfig /tmp/mconfig
 rm -rf /opt/xtables-addons-2.10
 tar -xJf xtables-addons-2.10.tar.xz
 mv /tmp/mconfig /opt/xtables-addons-2.10
-#yum -y install gcc kernel-devel iptables-devel perl-Text-CSV_XS automake compat-iptables
+#yum -y install gcc kernel-devel-`uname -r` kernel-headers-`uname -r` iptables-devel perl-Text-CSV_XS automake compat-iptables
 cd /opt/xtables-addons-2.10
 for x in "./configure --with-kbuild=/lib/modules/$KERNEL_VERSION/build" make 'make install'
 do
@@ -14,6 +14,7 @@ do
  then
   logger "$x failed disabling iptables on boot"
   chkconfig iptables off
+  exit 1
  fi
 done
 cd /opt/xtables-addons-2.10/geoip
